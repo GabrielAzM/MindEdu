@@ -1,0 +1,1 @@
+-- Seed SQL complementar. A carga principal de conteudo usa JSON em `backend/seeds`.

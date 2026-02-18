@@ -1,0 +1,16 @@
+pyproject.toml
+app/__init__.py
+app/main.py
+mindedu_backend.egg-info/PKG-INFO
+mindedu_backend.egg-info/SOURCES.txt
+mindedu_backend.egg-info/dependency_links.txt
+mindedu_backend.egg-info/requires.txt
+mindedu_backend.egg-info/top_level.txt
+tests/test_admin_quiz_editor.py
+tests/test_auth.py
+tests/test_content.py
+tests/test_emotions.py
+tests/test_exports.py
+tests/test_moderation.py
+tests/test_recovery.py
+tests/test_uxu.py

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "recovery.schema.json",
+  "type": "object",
+  "definitions": {
+    "forgot_id": {
+      "type": "object",
+      "required": ["email"],
+      "additionalProperties": false,
+      "properties": {
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "reset_password": {
+      "type": "object",
+      "required": ["email"],
+      "additionalProperties": false,
+      "properties": {
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+    "confirm": {
+      "type": "object",
+      "required": ["request_id", "token"],
+      "additionalProperties": false,
+      "properties": {
+        "request_id": { "type": "string", "minLength": 3 },
+        "token": { "type": "string", "minLength": 4, "maxLength": 16 },
+        "new_password": { "type": "string", "minLength": 8, "maxLength": 128 }
+      }
+    }
+  }
+}

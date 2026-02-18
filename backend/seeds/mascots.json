@@ -1,0 +1,28 @@
+{
+  "mascots": [
+    {
+      "id": "fox",
+      "name": "Lumi Fox",
+      "animations": ["idle", "happy", "levelup"],
+      "base_stats": { "empatia": 1, "calma": 1, "comunicacao": 1, "coragem": 1, "autocuidado": 1 }
+    },
+    {
+      "id": "owl",
+      "name": "Nino Owl",
+      "animations": ["idle", "happy", "levelup"],
+      "base_stats": { "empatia": 1, "calma": 2, "comunicacao": 1, "coragem": 1, "autocuidado": 1 }
+    }
+  ],
+  "items": [
+    { "id": "it_01", "name": "Cachecol Solar", "slot": "neck", "rarity": "common" },
+    { "id": "it_02", "name": "Oculos Nebula", "slot": "face", "rarity": "rare" },
+    { "id": "it_03", "name": "Chapeu Cometa", "slot": "head", "rarity": "rare" },
+    { "id": "it_04", "name": "Asa de Papel", "slot": "back", "rarity": "common" },
+    { "id": "it_05", "name": "Aura Verde", "slot": "effect", "rarity": "epic" },
+    { "id": "it_06", "name": "Pulseira Brisa", "slot": "hand", "rarity": "common" },
+    { "id": "it_07", "name": "Mochila Pixel", "slot": "back", "rarity": "rare" },
+    { "id": "it_08", "name": "Tiara Aurora", "slot": "head", "rarity": "epic" },
+    { "id": "it_09", "name": "Pegadas Estelares", "slot": "effect", "rarity": "rare" },
+    { "id": "it_10", "name": "Broche Coracao", "slot": "chest", "rarity": "common" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "moderation.schema.json",
+  "type": "object",
+  "definitions": {
+    "report_create": {
+      "type": "object",
+      "required": ["target_type", "target_id", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "target_type": { "type": "string", "enum": ["mission", "mission_response", "user", "coop_challenge"] },
+        "target_id": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "reason": { "type": "string", "enum": ["assedio", "dados_pessoais", "improprio", "bullying", "spam", "outro"] },
+        "details": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

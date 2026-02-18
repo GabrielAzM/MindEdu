@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "uxu.schema.json",
+  "type": "object",
+  "definitions": {
+    "mission_create": {
+      "type": "object",
+      "required": ["category", "intensity", "context_tags", "want_now", "partner_user_id"],
+      "additionalProperties": false,
+      "properties": {
+        "category": { "type": "string", "enum": ["ansiedade", "frustracao", "autoestima", "conflitos", "foco_rotina", "social", "familia", "escola"] },
+        "intensity": { "type": "integer", "minimum": 1, "maximum": 5 },
+        "context_tags": { "type": "array", "minItems": 1, "maxItems": 8, "items": { "type": "string", "minLength": 1, "maxLength": 32 } },
+        "want_now": { "type": "string", "enum": ["escuta", "ideias_praticas", "motivacao", "acalmar", "organizar_passos"] },
+        "partner_user_id": { "type": "string", "minLength": 6, "maxLength": 32 }
+      }
+    },
+    "mission_respond": {
+      "type": "object",
+      "required": ["card_id", "guided_actions_selected"],
+      "additionalProperties": false,
+      "properties": {
+        "card_id": { "type": "integer", "minimum": 1 },
+        "guided_actions_selected": { "type": "array", "minItems": 1, "maxItems": 5, "items": { "type": "string", "minLength": 1, "maxLength": 64 } }
+      }
+    },
+    "mission_feedback": {
+      "type": "object",
+      "required": ["response_id", "useful"],
+      "additionalProperties": false,
+      "properties": {
+        "response_id": { "type": "integer", "minimum": 1 },
+        "useful": { "type": "boolean" },
+        "best_response": { "type": "boolean" }
+      }
+    }
+  }
+}

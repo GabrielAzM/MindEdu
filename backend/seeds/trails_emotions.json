@@ -1,0 +1,418 @@
+{
+  "trail": {
+    "slug": "emocoes",
+    "title": "Trilha de Emocoes",
+    "description": "Reconhecer, regular e cooperar com seguranca.",
+    "age_group": "all"
+  },
+  "lessons": [
+    {
+      "slug": "emocoes-01-reconhecer",
+      "title": "Reconhecendo emocoes",
+      "duration_min": 3,
+      "cards": [
+        { "type": "title", "text": "Toda emocao traz um sinal" },
+        { "type": "intro", "text": "Emocoes mostram o que importa para voce em cada situacao." },
+        { "type": "content", "text": "Nomear emocao ajuda a escolher melhor o proximo passo." },
+        { "type": "example", "text": "Exemplo: antes da prova, o peito aperta. Nomear como ansiedade ajuda a pausar." },
+        { "type": "exercise", "text": "Escolha 1 emocao que sentiu hoje e em qual momento apareceu." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-01",
+        "title": "Quiz: Reconhecendo emocoes",
+        "questions": [
+          {
+            "prompt": "Qual habilidade ajuda primeiro a regular uma emocao?",
+            "explanation": "Nomear emocoes melhora clareza e resposta.",
+            "options": [
+              { "text": "Ignorar tudo", "is_correct": false },
+              { "text": "Nomear a emocao", "is_correct": true },
+              { "text": "Comparar com outros", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Intensidade emocional vai de:",
+            "explanation": "No MindEdu o termometro vai de 1 a 5.",
+            "options": [
+              { "text": "1 a 5", "is_correct": true },
+              { "text": "1 a 10", "is_correct": false },
+              { "text": "0 a 3", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Pedir apoio e:",
+            "explanation": "Pedir apoio e uma habilidade de autocuidado.",
+            "options": [
+              { "text": "Sinal de fraqueza", "is_correct": false },
+              { "text": "Uma habilidade", "is_correct": true },
+              { "text": "Proibido", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-01",
+        "title": "Mapa de 3 emocoes",
+        "steps": ["nomear_3_emocoes_no_dia"],
+        "safety_notes": ["Sem compartilhar dados pessoais"]
+      }
+    },
+    {
+      "slug": "emocoes-02-intensidade",
+      "title": "Termometro emocional",
+      "duration_min": 4,
+      "cards": [
+        { "type": "title", "text": "Intensidade de 1 a 5" },
+        { "type": "intro", "text": "Intensidade nao mede se a emocao e boa ou ruim; mede o quanto ela esta forte." },
+        { "type": "content", "text": "Intensidade alta pede pausa curta antes de agir." },
+        { "type": "example", "text": "Se voce marcar 4 ou 5, faca respiracao e so depois tome decisoes." },
+        { "type": "exercise", "text": "Avalie sua emocao atual de 1 a 5." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-02",
+        "title": "Quiz: Intensidade",
+        "questions": [
+          {
+            "prompt": "Quando a intensidade esta alta, o melhor primeiro passo e:",
+            "explanation": "Pausar reduz impulso e ajuda a decidir melhor.",
+            "options": [
+              { "text": "Responder imediatamente", "is_correct": false },
+              { "text": "Fazer uma pausa curta", "is_correct": true },
+              { "text": "Ignorar a situacao", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "No check-in, intensidade valida e:",
+            "explanation": "Escala oficial do produto e 1-5.",
+            "options": [
+              { "text": "1 a 5", "is_correct": true },
+              { "text": "5 a 10", "is_correct": false },
+              { "text": "0 a 100", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Registrar check-in ajuda a:",
+            "explanation": "Historico revela padroes e o que ajuda.",
+            "options": [
+              { "text": "Perder tempo", "is_correct": false },
+              { "text": "Identificar padroes", "is_correct": true },
+              { "text": "Expor dados privados", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-02",
+        "title": "Dois check-ins",
+        "steps": ["registrar_2_checkins_com_intensidade"],
+        "safety_notes": ["Use apenas tags pre-definidas"]
+      }
+    },
+    {
+      "slug": "emocoes-03-pausa-respiracao",
+      "title": "Pausa de respiracao",
+      "duration_min": 3,
+      "cards": [
+        { "type": "title", "text": "Respirar para reduzir impulso" },
+        { "type": "intro", "text": "Respirar de forma guiada ajuda o corpo a sair do modo de alerta." },
+        { "type": "content", "text": "Respiracao quadrada: 4-4-4-4." },
+        { "type": "example", "text": "Use antes de responder mensagem dificil, falar em publico ou comecar estudo." },
+        { "type": "exercise", "text": "Pratique 1 minuto e reavalie intensidade." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-03",
+        "title": "Quiz: Respiracao",
+        "questions": [
+          {
+            "prompt": "Respiracao quadrada usa qual contagem?",
+            "explanation": "O modelo simples e 4-4-4-4.",
+            "options": [
+              { "text": "4-4-4-4", "is_correct": true },
+              { "text": "8-8-8-8", "is_correct": false },
+              { "text": "2-2-2-2", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "A respiracao ajuda a:",
+            "explanation": "Ela ajuda a reduzir ativacao fisica.",
+            "options": [
+              { "text": "Aumentar pressao", "is_correct": false },
+              { "text": "Reduzir impulso", "is_correct": true },
+              { "text": "Evitar qualquer emocao", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Depois da pausa, e recomendado:",
+            "explanation": "Reavaliar intensidade orienta proximo passo.",
+            "options": [
+              { "text": "Reavaliar intensidade", "is_correct": true },
+              { "text": "Cancelar tudo", "is_correct": false },
+              { "text": "Publicar dados pessoais", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-03",
+        "title": "Respiracao 2x",
+        "steps": ["praticar_respiracao_2x_no_dia"],
+        "safety_notes": ["Pare se sentir desconforto e busque adulto de confianca"]
+      }
+    },
+    {
+      "slug": "emocoes-04-pensamento-fato",
+      "title": "Pensamentos x fatos",
+      "duration_min": 5,
+      "cards": [
+        { "type": "title", "text": "Nem todo pensamento e fato" },
+        { "type": "intro", "text": "Pensamentos podem exagerar risco quando estamos cansados ou pressionados." },
+        { "type": "content", "text": "Procure evidencias antes de concluir." },
+        { "type": "example", "text": "Pensamento: vou errar tudo. Evidencia: estudei duas partes e acertei nos exercicios." },
+        { "type": "exercise", "text": "Escreva 1 pensamento e 1 evidencia real." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-04",
+        "title": "Quiz: Pensamento e fato",
+        "questions": [
+          {
+            "prompt": "Pensamentos automativos sao:",
+            "explanation": "Pensamentos nao sao fatos por si so.",
+            "options": [
+              { "text": "Sempre fatos", "is_correct": false },
+              { "text": "Hipoteses que podem ser checadas", "is_correct": true },
+              { "text": "Leis obrigatorias", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Evidencia serve para:",
+            "explanation": "Evidencia aumenta precisao da interpretacao.",
+            "options": [
+              { "text": "Aumentar drama", "is_correct": false },
+              { "text": "Testar o pensamento", "is_correct": true },
+              { "text": "Ignorar contexto", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Melhor atitude quando nao tenho certeza:",
+            "explanation": "Pausar e checar dados concretos.",
+            "options": [
+              { "text": "Concluir rapido", "is_correct": false },
+              { "text": "Checar evidencias", "is_correct": true },
+              { "text": "Atacar alguem", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-04",
+        "title": "Tabela de evidencia",
+        "steps": ["fazer_1_tabela_pensamento_evidencia"],
+        "safety_notes": ["Nao incluir dados sensiveis"]
+      }
+    },
+    {
+      "slug": "emocoes-05-pedir-apoio",
+      "title": "Pedir apoio com seguranca",
+      "duration_min": 4,
+      "cards": [
+        { "type": "title", "text": "Pedir ajuda e habilidade" },
+        { "type": "intro", "text": "Apoio certo no momento certo diminui sobrecarga e aumenta seguranca." },
+        { "type": "content", "text": "Use pedido claro: preciso de escuta, ideia ou plano." },
+        { "type": "example", "text": "Pedido claro: hoje preciso de ajuda para organizar 3 passos da tarefa." },
+        { "type": "exercise", "text": "Simule um pedido curto de apoio." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-05",
+        "title": "Quiz: Apoio seguro",
+        "questions": [
+          {
+            "prompt": "No MVP, pedido de apoio usa:",
+            "explanation": "Uso de missoes estruturadas sem texto livre.",
+            "options": [
+              { "text": "Chat livre", "is_correct": false },
+              { "text": "Missao estruturada", "is_correct": true },
+              { "text": "DM", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Campo valido da missao:",
+            "explanation": "Want_now orienta tipo de apoio.",
+            "options": [
+              { "text": "want_now", "is_correct": true },
+              { "text": "telefone", "is_correct": false },
+              { "text": "endereco", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Compartilhar contato pessoal e:",
+            "explanation": "Dados pessoais sao bloqueados por seguranca.",
+            "options": [
+              { "text": "Permitido", "is_correct": false },
+              { "text": "Proibido", "is_correct": true },
+              { "text": "Obrigatorio", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-05",
+        "title": "Criar missao",
+        "steps": ["criar_1_missao_estruturada"],
+        "safety_notes": ["Sem texto livre no MVP"]
+      }
+    },
+    {
+      "slug": "emocoes-06-comunicacao-calma",
+      "title": "Comunicacao calma",
+      "duration_min": 4,
+      "cards": [
+        { "type": "title", "text": "Falar de forma respeitosa" },
+        { "type": "intro", "text": "Comunicacao calma nao e ficar quieto; e falar com clareza e limite." },
+        { "type": "content", "text": "Use: aconteceu X, senti Y, preciso Z." },
+        { "type": "example", "text": "Aconteceu: fui interrompido. Senti: frustracao. Preciso: terminar minha fala." },
+        { "type": "exercise", "text": "Monte uma frase de comunicacao assertiva." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-06",
+        "title": "Quiz: Comunicacao",
+        "questions": [
+          {
+            "prompt": "Estrutura recomendada:",
+            "explanation": "Fato, sentimento e necessidade.",
+            "options": [
+              { "text": "Acusar, gritar, cobrar", "is_correct": false },
+              { "text": "Aconteceu X, senti Y, preciso Z", "is_correct": true },
+              { "text": "Silenciar sempre", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Tom calmo ajuda a:",
+            "explanation": "Reduz escalada de conflito.",
+            "options": [
+              { "text": "Escalar conflito", "is_correct": false },
+              { "text": "Aumentar clareza", "is_correct": true },
+              { "text": "Excluir respeito", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Se houver desrespeito continuo:",
+            "explanation": "Buscar adulto de confianca e medida segura.",
+            "options": [
+              { "text": "Manter risco", "is_correct": false },
+              { "text": "Buscar adulto de confianca", "is_correct": true },
+              { "text": "Compartilhar dados pessoais", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-06",
+        "title": "Roteiro em 3 partes",
+        "steps": ["aplicar_roteiro_3_partes_1x"],
+        "safety_notes": ["Mantenha conversa respeitosa"]
+      }
+    },
+    {
+      "slug": "emocoes-07-autocuidado-curto",
+      "title": "Autocuidado de 5 minutos",
+      "duration_min": 3,
+      "cards": [
+        { "type": "title", "text": "Acoes pequenas importam" },
+        { "type": "intro", "text": "Autocuidado curto evita acumulo de estresse durante o dia." },
+        { "type": "content", "text": "Agua, postura, respiracao, mini pausa." },
+        { "type": "example", "text": "Dois minutos para beber agua e alongar ja mudam seu foco." },
+        { "type": "exercise", "text": "Escolha 2 acoes e execute agora." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-07",
+        "title": "Quiz: Autocuidado",
+        "questions": [
+          {
+            "prompt": "Autocuidado curto significa:",
+            "explanation": "Microacoes possiveis em poucos minutos.",
+            "options": [
+              { "text": "Apenas tarefas longas", "is_correct": false },
+              { "text": "Microacoes praticas", "is_correct": true },
+              { "text": "Ignorar sinais", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Uma microacao valida:",
+            "explanation": "Respiracao e hidratar sao bons exemplos.",
+            "options": [
+              { "text": "Respirar por 1 minuto", "is_correct": true },
+              { "text": "Expor senha", "is_correct": false },
+              { "text": "Pular refeicao", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Meta do autocuidado no app:",
+            "explanation": "Constancia leve sem punicao pesada.",
+            "options": [
+              { "text": "Punir falhas", "is_correct": false },
+              { "text": "Incentivar constancia", "is_correct": true },
+              { "text": "Criar competicao toxica", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-07",
+        "title": "Dois microcuidados",
+        "steps": ["executar_2_microcuidados"],
+        "safety_notes": ["Escolha acoes simples e seguras"]
+      }
+    },
+    {
+      "slug": "emocoes-08-plano-dia-dificil",
+      "title": "Plano para dia dificil",
+      "duration_min": 6,
+      "cards": [
+        { "type": "title", "text": "Plano seguro de enfrentamento" },
+        { "type": "intro", "text": "Um plano pronto evita decisoes no impulso quando o dia fica pesado." },
+        { "type": "content", "text": "Defina sinal de alerta, acao imediata e rede de apoio." },
+        { "type": "example", "text": "Sinal: ansiedade 5/5. Acao: respirar 1 min. Rede: adulto de confianca." },
+        { "type": "exercise", "text": "Monte plano com 3 passos e 1 adulto de confianca." }
+      ],
+      "quiz": {
+        "slug": "quiz-emocoes-08",
+        "title": "Quiz: Plano seguro",
+        "questions": [
+          {
+            "prompt": "Plano de dia dificil inclui:",
+            "explanation": "Sinal, acao e rede de apoio.",
+            "options": [
+              { "text": "Somente improviso", "is_correct": false },
+              { "text": "Sinal, acao e rede", "is_correct": true },
+              { "text": "Exposicao publica", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Rede de apoio deve ser:",
+            "explanation": "Pessoas de confianca e seguras.",
+            "options": [
+              { "text": "Desconhecidos online", "is_correct": false },
+              { "text": "Adulto de confianca", "is_correct": true },
+              { "text": "Ninguem", "is_correct": false }
+            ]
+          },
+          {
+            "prompt": "Relatorio educativo deve:",
+            "explanation": "Ser agregado e sem diagnostico.",
+            "options": [
+              { "text": "Fazer diagnostico", "is_correct": false },
+              { "text": "Ser educativo agregado", "is_correct": true },
+              { "text": "Expor detalhes sensiveis", "is_correct": false }
+            ]
+          }
+        ]
+      },
+      "challenge": {
+        "slug": "desafio-emocoes-08",
+        "title": "Plano em 3 passos",
+        "steps": ["registrar_plano_dia_dificil"],
+        "safety_notes": ["Nao incluir dados de contato no plano"]
+      }
+    }
+  ]
+}

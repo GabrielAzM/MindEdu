@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "admin.schema.json",
+  "type": "object",
+  "definitions": {
+    "user_action": {
+      "type": "object",
+      "required": ["action", "reason"],
+      "additionalProperties": false,
+      "properties": {
+        "action": { "type": "string", "enum": ["warn", "mute", "ban", "unban", "reset_password", "reset_user_id"] },
+        "reason": { "type": "string", "minLength": 3, "maxLength": 500 },
+        "duration_minutes": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "report_resolve": {
+      "type": "object",
+      "required": ["resolution", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "resolution": { "type": "string", "enum": ["action_taken", "dismissed"] },
+        "note": { "type": "string", "minLength": 3, "maxLength": 500 }
+      }
+    }
+  }
+}
