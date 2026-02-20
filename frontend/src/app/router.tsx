@@ -84,4 +84,5 @@ export const router = createBrowserRouter([
       { path: "metrics", element: <AdminMetricsPage /> },
     ],
   },
+  { path: "*", element: <Navigate to="/home" replace /> },
 ]);
