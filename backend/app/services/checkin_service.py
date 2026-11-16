@@ -50,7 +50,7 @@ def create_checkin(
     ).mappings().one()
 
     xp_awarded = 0
-    xp_reason = "limite diario ja utilizado"
+    xp_reason = "limite diário já utilizado"
     if daily_checkin_count == 0:
         xp_awarded = 3
         xp_reason = "checkin diario"
@@ -75,7 +75,7 @@ def create_checkin(
         "suggestion": {
             "type": "mission_or_lesson",
             "lesson_slug": lesson_slug,
-            "cta": "Criar Missao de Apoio",
+            "cta": "Criar Missão de Apoio",
         },
     }
 

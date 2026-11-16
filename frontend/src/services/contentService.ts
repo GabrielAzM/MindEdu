@@ -15,6 +15,24 @@ export async function getTrails(age_group?: string) {
   };
 }
 
+export async function getMyChallenges() {
+  const { data } = await api.get("/challenges");
+  return data as {
+    items: Array<{
+      id: number;
+      title: string;
+      xp_reward: number;
+      safety_notes: string[];
+      lesson_id: number;
+      lesson_title: string;
+      quiz_id: number | null;
+      status: "pending" | "in_progress" | "completed";
+      completed_at: string | null;
+      completed: boolean;
+    }>;
+  };
+}
+
 export async function getLesson(id: number) {
   const { data } = await api.get(`/lessons/${id}`);
   return data as {

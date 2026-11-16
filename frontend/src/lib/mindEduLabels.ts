@@ -1,0 +1,80 @@
+const labels: Record<string, string> = {
+  advanced: "avançada",
+  intermediate: "intermediária",
+  beginner: "inicial",
+  expert: "avançada",
+  core: "essencial",
+  alegria: "alegria",
+  ansiedade: "ansiedade",
+  autocuidado: "autocuidado",
+  autoestima: "autoestima",
+  calma: "calma",
+  comunicacao: "comunicação",
+  concentracao: "concentração",
+  conflitos: "conflitos",
+  emocao: "emoção",
+  emocoes: "emoções",
+  escuta: "escuta",
+  frustracao: "frustração",
+  foco_rotina: "foco e rotina",
+  foco: "foco",
+  familia: "família",
+  ideias_praticas: "ideias práticas",
+  medo: "medo",
+  motivacao: "motivação",
+  organizar_passos: "organizar passos",
+  orgulho: "orgulho",
+  raiva: "raiva",
+  seguranca: "segurança",
+  respiracao: "respiração",
+  cooperacao: "cooperação",
+  rotina: "rotina",
+  organizacao: "organização",
+  planejamento: "planejamento",
+  empatia: "empatia",
+  coragem: "coragem",
+  social: "social",
+  escola: "escola",
+  sono: "sono",
+  estudos: "estudos",
+  apresentacao: "apresentação",
+  pending: "pendente",
+  active: "ativa",
+  rejected: "recusada",
+  tristeza: "tristeza",
+  confusao: "confusão",
+  respirar_1_min: "Respirar por 1 minuto",
+  tomar_agua: "Tomar água",
+  contar_5_objetos: "Contar cinco objetos",
+  pausa_2_min: "Fazer uma pausa de 2 minutos",
+  listar_3_passos: "Listar três passos",
+  timer_10_min: "Focar por 10 minutos",
+  timer_15_5: "Focar por 15 minutos e fazer uma pausa de 5",
+  anotar_pequena_vitoria: "Anotar uma pequena conquista",
+  frase_apoio_pessoal: "Criar uma frase de apoio pessoal",
+  listar_rede_apoio: "Identificar pessoas de confiança",
+};
+
+const words: Record<string, string> = {
+  acao: "ação",
+  apoio: "apoio",
+  agua: "água",
+  confianca: "confiança",
+  dificil: "difícil",
+  emocoes: "emoções",
+  passos: "passos",
+  respiracoes: "respirações",
+  tecnica: "técnica",
+  unica: "única",
+  usuario: "usuário",
+};
+
+export function formatMindEduLabel(value: string): string {
+  const normalized = value.trim().toLocaleLowerCase("pt-BR");
+  if (labels[normalized]) return labels[normalized];
+
+  return normalized
+    .split("_")
+    .map((word) => words[word] ?? word)
+    .join(" ");
+}

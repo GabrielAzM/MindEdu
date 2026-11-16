@@ -6,6 +6,7 @@ import { ErrorState } from "../components/common/ErrorState";
 import { LoadingState } from "../components/common/LoadingState";
 import { Panel } from "../components/common/Panel";
 import { confirmCoopPair, createCoopPair, createMission, listCoopPairs } from "../services/uxuService";
+import { formatMindEduLabel } from "../lib/mindEduLabels";
 
 type CoopForm = {
   category: string;
@@ -24,7 +25,7 @@ export function MissionFeedPage() {
     defaultValues: {
       category: "ansiedade",
       intensity: 3,
-      context_tags: "escola,apresentacao",
+      context_tags: "escola,apresentação",
       want_now: "organizar_passos",
       partner_invite_user_id: "",
       mission_partner_user_id: "",
@@ -41,7 +42,7 @@ export function MissionFeedPage() {
       queryClient.invalidateQueries({ queryKey: ["my-trails"] });
     },
     onError: () => {
-      setFormError("Nao foi possivel criar a missao. Verifique o user_id e a amizade ativa.");
+      setFormError("Não foi possível criar a missão. Verifique o user_id e a amizade ativa.");
     },
   });
 
@@ -64,11 +65,11 @@ export function MissionFeedPage() {
     const partnerUserId = values.mission_partner_user_id.trim();
     const activePartnerIds = new Set((pairsQuery.data?.items ?? []).filter((pair) => pair.status === "active").map((pair) => pair.partner_user_id));
     if (!partnerUserId) {
-      setFormError("Informe o user_id do amigo para direcionar a missao.");
+      setFormError("Informe o user_id do amigo para direcionar a missão.");
       return;
     }
     if (!activePartnerIds.has(partnerUserId)) {
-      setFormError("Esse user_id ainda nao esta com amizade ativa. Envie convite e aguarde confirmacao.");
+      setFormError("Esse user_id ainda não está com amizade ativa. Envie convite e aguarde confirmação.");
       return;
     }
 
@@ -93,13 +94,13 @@ export function MissionFeedPage() {
   });
 
   if (pairsQuery.isPending) return <LoadingState label="Carregando sistema de amizade..." />;
-  if (pairsQuery.isError) return <ErrorState message="Falha ao carregar cooperacao." />;
+  if (pairsQuery.isError) return <ErrorState message="Falha ao carregar cooperação." />;
 
   const activePairs = pairsQuery.data.items.filter((pair) => pair.status === "active");
 
   return (
     <div className="space-y-4">
-      <h1 className="font-heading text-2xl font-bold">Cooperacao por amizade</h1>
+      <h1 className="font-heading text-2xl font-bold">Cooperação por amizade</h1>
 
       <Panel className="border-2 border-emerald-200 bg-emerald-50">
         <h2 className="font-semibold">Convite de amizade por user_id</h2>
@@ -118,7 +119,7 @@ export function MissionFeedPage() {
           {pairsQuery.data.items.map((pair) => (
             <div key={pair.id} className="rounded border border-emerald-200 bg-white p-2">
               <p>
-                Amigo: <span className="font-semibold">{pair.partner_name}</span> ({pair.partner_user_id}) - status: {pair.status}
+                Amigo: <span className="font-semibold">{pair.partner_name}</span> ({pair.partner_user_id}) - status: {formatMindEduLabel(pair.status)}
               </p>
               {pair.can_confirm ? (
                 <div className="mt-2 flex gap-2">
@@ -144,16 +145,16 @@ export function MissionFeedPage() {
       </Panel>
 
       <Panel>
-        <h2 className="font-semibold">Criar missao direcionada por user_id</h2>
+        <h2 className="font-semibold">Criar missão direcionada por user_id</h2>
         <form className="mt-3 grid gap-2 md:grid-cols-2" onSubmit={submitCreate}>
           <input
             className="rounded border p-2 md:col-span-2"
-            placeholder="user_id do amigo que vai receber a missao"
+            placeholder="user_id do amigo que vai receber a missão"
             {...form.register("mission_partner_user_id")}
           />
           <select className="rounded border p-2" {...form.register("category")}>
             <option value="ansiedade">Ansiedade</option>
-            <option value="frustracao">Frustracao</option>
+            <option value="frustracao">Frustração</option>
             <option value="autoestima">Autoestima</option>
             <option value="conflitos">Conflitos</option>
             <option value="foco_rotina">Foco/Rotina</option>
@@ -162,13 +163,13 @@ export function MissionFeedPage() {
           <input className="rounded border p-2" {...form.register("context_tags")} />
           <select className="rounded border p-2" {...form.register("want_now")}>
             <option value="escuta">Escuta</option>
-            <option value="ideias_praticas">Ideias praticas</option>
-            <option value="motivacao">Motivacao</option>
+            <option value="ideias_praticas">Ideias práticas</option>
+            <option value="motivacao">Motivação</option>
             <option value="acalmar">Acalmar</option>
             <option value="organizar_passos">Organizar passos</option>
           </select>
           <button className="rounded bg-ink px-4 py-2 text-white md:col-span-2" type="submit">
-            Criar missao direcionada
+            Criar missão direcionada
           </button>
           {formError ? <p className="text-sm text-red-700 md:col-span-2">{formError}</p> : null}
         </form>
@@ -177,9 +178,9 @@ export function MissionFeedPage() {
       {createMutation.data ? (
         <Panel className="border-2 border-emerald-200 bg-emerald-50">
           <p className="font-medium text-emerald-800">
-            Missao criada e enviada para {createMutation.data.target_user_id ?? "parceiro"}.
+            Missão criada e enviada para {createMutation.data.target_user_id ?? "parceiro"}.
           </p>
-          <p className="text-sm text-ink/80">ID da missao: #{createMutation.data.id}</p>
+          <p className="text-sm text-ink/80">ID da missão: #{createMutation.data.id}</p>
         </Panel>
       ) : null}
 

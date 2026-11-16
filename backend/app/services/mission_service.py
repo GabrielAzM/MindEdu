@@ -195,7 +195,7 @@ def inbox(db: Session, user_pk: int) -> list[dict[str, Any]]:
             continue
         item = dict(row)
         item["context_tags"] = json.loads(item.pop("context_tags_json"))
-        item["message"] = f"voce recebeu uma missao de ({item['creator_username']})"
+        item["message"] = f"Você recebeu uma missão de ({item['creator_username']})."
         items.append(item)
     return items
 

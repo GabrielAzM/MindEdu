@@ -34,7 +34,7 @@ const animationLabels: Record<MascotAnimation, string> = {
 const rarityLabels = {
   common: "comum",
   rare: "raro",
-  epic: "epico",
+  epic: "épico",
 } as const;
 
 export function MascotPage() {
@@ -113,7 +113,7 @@ export function MascotPage() {
       </div>
 
       <div className="space-y-2">
-        <p className="text-sm font-semibold">Animacao da cena</p>
+        <p className="text-sm font-semibold">Animação da cena</p>
         <div className="flex flex-wrap gap-2">
           {(Object.keys(animationLabels) as MascotAnimation[]).map((key) => (
             <button
@@ -132,13 +132,13 @@ export function MascotPage() {
 
       <div className="grid gap-4 lg:grid-cols-2">
         <Panel>
-          <h2 className="font-semibold">Evolucao por XP</h2>
+          <h2 className="font-semibold">Evolução por XP</h2>
           <img
             src={assets.evolutions[stage]}
-            alt={`Mascote ${mascotId} evolucao ${stage}`}
+            alt={`Mascote ${mascotId} evolução ${stage}`}
             className="mt-3 h-56 w-full rounded-xl border border-sky-100 object-contain"
           />
-          <p className="mt-2 text-sm">Evolucao atual: {stage}/4</p>
+          <p className="mt-2 text-sm">Evolução atual: {stage}/4</p>
           <p className="text-sm text-ink/70">
             Thresholds: 10, 30, 50, 70 XP | total atual: {profile.xp.total}
           </p>
@@ -148,12 +148,12 @@ export function MascotPage() {
         </Panel>
 
         <Panel>
-          <h2 className="font-semibold">Inventario cosmetico ({mascotId})</h2>
+          <h2 className="font-semibold">Inventário cosmético ({mascotId})</h2>
           <p className="mt-1 text-xs text-ink/70">
             Regra: apenas 1 item equipado por mascote. Raridade aumenta efeito visual.
           </p>
           <p className="text-xs text-ink/70">
-            Recompensas de trilha: 7 itens possiveis por level up. Repetido vira +5 XP.
+            Recompensas de trilha: 7 itens possíveis por level up. Repetido vira +5 XP.
           </p>
           {equippedItem ? (
             <p className="mt-2 rounded border border-emerald-200 bg-emerald-50 px-2 py-1 text-xs text-emerald-900">
@@ -167,7 +167,7 @@ export function MascotPage() {
           <div className="mt-3 grid gap-2">
             {inventory.length === 0 ? (
               <p className="rounded border border-sky-100 bg-sky-50 p-2 text-sm text-ink/80">
-                Ainda sem itens liberados. Complete trilhas e suba de nivel para desbloquear.
+                Ainda sem itens liberados. Complete trilhas e suba de nível para desbloquear.
               </p>
             ) : null}
             {inventory.map((item) => {
@@ -206,7 +206,7 @@ export function MascotPage() {
           <div className="mt-2 grid gap-2 md:grid-cols-2">
             {recentlyGranted.map((reward) => (
               <div key={`${reward.level}-${reward.id}`} className="rounded border border-sky-100 bg-sky-50 p-2 text-sm">
-                Nivel {reward.level}: {reward.name} ({rarityLabels[reward.rarity]}) - efeito x{reward.effect_multiplier}
+                Nível {reward.level}: {reward.name} ({rarityLabels[reward.rarity]}) - efeito x{reward.effect_multiplier}
               </div>
             ))}
           </div>
@@ -233,7 +233,7 @@ export function MascotPage() {
           </div>
         </Panel>
         <Panel>
-          <h2 className="font-semibold">XP recente (dinamico)</h2>
+          <h2 className="font-semibold">XP recente (dinâmico)</h2>
           <div className="mt-3 h-64">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={xpData}>

@@ -12,7 +12,7 @@ from app.core.config import get_settings
 from app.core.security import generate_recovery_token, hash_password, hash_token
 
 
-OUTBOX_PATH = Path("data/recovery_outbox.log")
+OUTBOX_PATH = Path(get_settings().recovery_outbox_path)
 
 
 def _write_outbox(email: str, request_id: str, token: str, request_type: str) -> None:

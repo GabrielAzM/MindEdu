@@ -9,9 +9,10 @@ from uuid import uuid4
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.core.config import get_settings
 from app.utils.pdf_builder import build_educational_report
 
-EXPORT_DIR = Path("exports")
+EXPORT_DIR = Path(get_settings().export_dir)
 
 
 def create_report_export(db: Session, user_pk: int, period_start: date, period_end: date) -> dict[str, str]:
@@ -34,30 +35,31 @@ def create_report_export(db: Session, user_pk: int, period_start: date, period_e
 
     try:
         summary = _build_summary(db, user_pk, period_start, period_end)
+        EXPORT_DIR.mkdir(parents=True, exist_ok=True)
         pdf_path = EXPORT_DIR / f"{report_id}.pdf"
 
         lines = [
-            f"Periodo: {period_start} ate {period_end}",
+            f"Período: {period_start} até {period_end}",
             "",
-            f"Trilhas concluidas: {summary['trails_completed']}",
-            f"Licoes concluidas: {summary['lessons_completed']}",
+            f"Trilhas concluídas: {summary['trails_completed']}",
+            f"Lições concluídas: {summary['lessons_completed']}",
             f"Tentativas de quiz: {summary['quiz_attempts']}",
             "",
-            "Tecnicas aprendidas:",
+            "Técnicas aprendidas:",
         ]
         lines.extend([f"- {item}" for item in summary["techniques"]])
         lines.extend(
             [
                 "",
                 f"Check-ins registrados: {summary['checkins_count']}",
-                f"Missoes criadas: {summary['missions_created']}",
-                f"Respostas uteis recebidas: {summary['useful_feedback_received']}",
+                f"Missões criadas: {summary['missions_created']}",
+                f"Respostas úteis recebidas: {summary['useful_feedback_received']}",
                 "",
-                "Este relatorio e educativo, agregado e nao diagnostico.",
+                "Este relatório é educativo, agregado e não diagnóstico.",
             ]
         )
 
-        build_educational_report(pdf_path, "Relatorio Educativo MindEdu", lines)
+        build_educational_report(pdf_path, "Relatório Educativo MindEdu", lines)
 
         db.execute(
             text(

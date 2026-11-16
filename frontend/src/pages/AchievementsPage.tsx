@@ -7,8 +7,8 @@ export function AchievementsPage() {
       <Panel>
         <ul className="list-disc space-y-1 pl-5">
           <li>Primeiro check-in</li>
-          <li>Primeira resposta util</li>
-          <li>Sequencia de 3 dias</li>
+          <li>Primeira resposta útil</li>
+          <li>Sequência de 3 dias</li>
         </ul>
       </Panel>
     </div>

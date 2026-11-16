@@ -17,10 +17,10 @@ export function ReportPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="font-heading text-2xl font-bold">Relatorio educativo</h1>
+      <h1 className="font-heading text-2xl font-bold">Relatório educativo</h1>
       <Panel>
         <button className="rounded bg-ink px-4 py-2 text-white" onClick={() => createMutation.mutate()} type="button">
-          Gerar relatorio
+          Gerar relatório
         </button>
         {reportId ? <p className="mt-2 text-sm">report_id: {reportId}</p> : null}
       </Panel>

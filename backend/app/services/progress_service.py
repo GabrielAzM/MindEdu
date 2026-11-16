@@ -14,51 +14,51 @@ MASCOT_STAGE_THRESHOLDS = [10, 30, 50, 70]
 RARITY_EFFECT_MULTIPLIER = {"common": 1, "rare": 2, "epic": 3}
 COSMETIC_LEVELUP_POOL = [
     {"id": "it_01", "name": "Cachecol Solar", "slot": "neck", "rarity": "common"},
-    {"id": "it_02", "name": "Oculos Nebula", "slot": "face", "rarity": "rare"},
-    {"id": "it_03", "name": "Chapeu Cometa", "slot": "head", "rarity": "rare"},
+    {"id": "it_02", "name": "Óculos Nebula", "slot": "face", "rarity": "rare"},
+    {"id": "it_03", "name": "Chapéu Cometa", "slot": "head", "rarity": "rare"},
     {"id": "it_05", "name": "Aura Verde", "slot": "effect", "rarity": "epic"},
     {"id": "it_07", "name": "Mochila Pixel", "slot": "back", "rarity": "rare"},
     {"id": "it_08", "name": "Tiara Aurora", "slot": "head", "rarity": "epic"},
-    {"id": "it_10", "name": "Broche Coracao", "slot": "chest", "rarity": "common"},
+    {"id": "it_10", "name": "Broche Coração", "slot": "chest", "rarity": "common"},
 ]
 
 AUTO_TRAIL_BLUEPRINTS = [
     {
         "key": "respira-foco",
-        "title": "Sprint de Respiracao e Foco",
-        "description": "Micropassos de regulacao e concentracao para dias corridos.",
+        "title": "Sprint de Respiração e Foco",
+        "description": "Micropassos de regulação e concentração para dias corridos.",
         "difficulty": "beginner",
         "tags": ["respiracao", "foco", "rotina"],
         "lesson_hints": ["emocoes-03-pausa-respiracao", "emocoes-02-intensidade", "emocoes-07-autocuidado-curto"],
     },
     {
         "key": "comunicacao-calma",
-        "title": "Comunicacao Sem Escalada",
-        "description": "Treino curto para conversas dificeis sem conflito toxico.",
+        "title": "Comunicação sem Escalada",
+        "description": "Treino curto para conversas difíceis sem conflito tóxico.",
         "difficulty": "intermediate",
         "tags": ["comunicacao", "conflitos", "empatia"],
         "lesson_hints": ["emocoes-06-comunicacao-calma", "emocoes-05-pedir-apoio", "emocoes-04-pensamento-fato"],
     },
     {
         "key": "anti-procrastinacao",
-        "title": "Plano Anti-Procrastinacao",
-        "description": "Organizacao em blocos curtos e revisao de pequenas vitorias.",
+        "title": "Plano Antiprocrastinação",
+        "description": "Organização em blocos curtos e revisão de pequenas vitórias.",
         "difficulty": "intermediate",
         "tags": ["foco", "planejamento", "autocuidado"],
         "lesson_hints": ["emocoes-07-autocuidado-curto", "emocoes-02-intensidade", "emocoes-08-plano-dia-dificil"],
     },
     {
         "key": "coragem-social",
-        "title": "Missao Coragem Social",
-        "description": "Exposicao gradual e segura para situacoes sociais do cotidiano.",
+        "title": "Missão Coragem Social",
+        "description": "Exposição gradual e segura para situações sociais do cotidiano.",
         "difficulty": "advanced",
         "tags": ["social", "coragem", "calma"],
         "lesson_hints": ["emocoes-05-pedir-apoio", "emocoes-06-comunicacao-calma", "emocoes-08-plano-dia-dificil"],
     },
     {
         "key": "uxu-lab",
-        "title": "Laboratorio de Apoio UxU",
-        "description": "Sequencia de colaboracao util com foco em feedback seguro.",
+        "title": "Laboratório de Apoio UxU",
+        "description": "Sequência de colaboração útil com foco em feedback seguro.",
         "difficulty": "expert",
         "tags": ["uxu", "empatia", "cooperacao"],
         "lesson_hints": ["emocoes-05-pedir-apoio", "emocoes-06-comunicacao-calma", "emocoes-01-reconhecer"],
@@ -66,7 +66,7 @@ AUTO_TRAIL_BLUEPRINTS = [
     {
         "key": "calma-provas",
         "title": "Calma para Dias de Prova",
-        "description": "Rotina de preparo, respiracao e revisao sem panico.",
+        "description": "Rotina de preparo, respiração e revisão sem pânico.",
         "difficulty": "beginner",
         "tags": ["escola", "calma", "foco"],
         "lesson_hints": ["emocoes-02-intensidade", "emocoes-03-pausa-respiracao", "emocoes-08-plano-dia-dificil"],
@@ -81,8 +81,8 @@ AUTO_TRAIL_BLUEPRINTS = [
     },
     {
         "key": "energia-diaria",
-        "title": "Energia e Ritmo Diario",
-        "description": "Microhabitos de sono, pausas e foco para constancia.",
+        "title": "Energia e Ritmo Diário",
+        "description": "Micro-hábitos de sono, pausas e foco para constância.",
         "difficulty": "beginner",
         "tags": ["autocuidado", "rotina", "sono"],
         "lesson_hints": ["emocoes-07-autocuidado-curto", "emocoes-03-pausa-respiracao", "emocoes-02-intensidade"],
@@ -97,8 +97,8 @@ AUTO_TRAIL_BLUEPRINTS = [
     },
     {
         "key": "autoconfianca-pratica",
-        "title": "Autoconfianca na Pratica",
-        "description": "Evidencias reais, metas minimas e progresso diario.",
+        "title": "Autoconfiança na Prática",
+        "description": "Evidências reais, metas mínimas e progresso diário.",
         "difficulty": "intermediate",
         "tags": ["autoestima", "coragem", "autocuidado"],
         "lesson_hints": ["emocoes-04-pensamento-fato", "emocoes-07-autocuidado-curto", "emocoes-01-reconhecer"],
@@ -113,8 +113,8 @@ AUTO_TRAIL_BLUEPRINTS = [
     },
     {
         "key": "dupla-estrategica",
-        "title": "Dupla Estrategica",
-        "description": "Trilha para cooperacao valida entre parceiros ativos.",
+        "title": "Dupla Estratégica",
+        "description": "Trilha para cooperação válida entre parceiros ativos.",
         "difficulty": "expert",
         "tags": ["cooperacao", "uxu", "comunicacao"],
         "lesson_hints": ["emocoes-05-pedir-apoio", "emocoes-06-comunicacao-calma", "emocoes-08-plano-dia-dificil"],
@@ -643,7 +643,7 @@ def list_user_trails(db: Session, user_pk: int) -> list[dict[str, Any]]:
             "slug": str(row["trail_key"]),
             "title": title,
             "description": str(row["description"]),
-            "age_group": "all",
+            "age_group": "10-12",
             "lesson_count": len(lesson_bundle_ids),
             "first_lesson_id": first_lesson_id,
             "is_generated": True,
@@ -695,7 +695,7 @@ def equip_mascot_item(db: Session, user_pk: int, mascot_id: str, item_id: str | 
         {"user_pk": user_pk, "item_id": item_id},
     ).mappings().first()
     if not item_row:
-        raise PermissionError("item nao pertence ao usuario")
+        raise PermissionError("O item não pertence ao usuário.")
 
     db.execute(
         text(
@@ -719,6 +719,65 @@ def equip_mascot_item(db: Session, user_pk: int, mascot_id: str, item_id: str | 
             "slot": str(item_row["slot"]),
         },
         "effect_multiplier": RARITY_EFFECT_MULTIPLIER.get(rarity, 1),
+    }
+
+
+def get_educator_progress_summary(db: Session, user_pk: int) -> dict[str, Any]:
+    user = db.execute(
+        text("SELECT user_id, username FROM users WHERE id = :id AND role = 'user'"),
+        {"id": user_pk},
+    ).mappings().first()
+    if not user:
+        raise ValueError("user not found")
+
+    total_xp = _sum_xp(db, user_pk)
+    progress = {
+        "lessons_completed": int(
+            db.execute(
+                text("SELECT COUNT(*) FROM lesson_completion WHERE user_pk = :user_pk"),
+                {"user_pk": user_pk},
+            ).scalar_one()
+        ),
+        "quizzes_passed": int(
+            db.execute(
+                text("SELECT COUNT(*) FROM quiz_attempts WHERE user_pk = :user_pk AND score >= 70"),
+                {"user_pk": user_pk},
+            ).scalar_one()
+        ),
+        "challenges_completed": int(
+            db.execute(
+                text("SELECT COUNT(*) FROM challenge_completion WHERE user_pk = :user_pk AND status = 'completed'"),
+                {"user_pk": user_pk},
+            ).scalar_one()
+        ),
+        "missions_created": int(
+            db.execute(
+                text("SELECT COUNT(*) FROM missions WHERE creator_user_pk = :user_pk"),
+                {"user_pk": user_pk},
+            ).scalar_one()
+        ),
+        "helpful_responses": int(
+            db.execute(
+                text(
+                    """
+                    SELECT COUNT(*)
+                    FROM mission_feedback mf
+                    JOIN mission_responses mr ON mr.id = mf.response_id
+                    WHERE mr.responder_user_pk = :user_pk AND mf.is_useful = 1
+                    """
+                ),
+                {"user_pk": user_pk},
+            ).scalar_one()
+        ),
+    }
+
+    return {
+        "user": dict(user),
+        "xp": {"total": total_xp, **_level_from_xp(total_xp), "tier": _tier_from_xp(total_xp)},
+        "progress": progress,
+        "skills": _skill_breakdown(db, user_pk),
+        "mascot": {"stage": _mascot_stage(total_xp), "max_stage": 4},
+        "recent_xp": _recent_xp_chart(db, user_pk),
     }
 
 
@@ -835,7 +894,7 @@ def get_profile_summary(db: Session, user_pk: int) -> dict[str, Any]:
         "mascot": {
             "stage": mascot_stage,
             "max_stage": 4,
-            "evolution_name": f"Evolucao {mascot_stage}",
+            "evolution_name": f"Evolução {mascot_stage}",
             "next_stage_at": MASCOT_STAGE_THRESHOLDS[min(3, mascot_stage)] if mascot_stage < 4 else None,
         },
         "cosmetics": {

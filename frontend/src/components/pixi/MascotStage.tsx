@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatedSprite, Application, Container, Spritesheet, Texture, type SpritesheetData } from "pixi.js";
+import { AnimatedSprite, Application, Assets, Container, Spritesheet, Texture, type SpritesheetData } from "pixi.js";
 
 import { useMascotStore } from "../../store/mascotStore";
 import { useMascotAssets } from "./useMascotAssets";
@@ -35,6 +35,7 @@ export function MascotStage({ animation = "idle" }: { animation?: "idle" | "happ
   const hostRef = useRef<HTMLDivElement | null>(null);
   const appRef = useRef<Application | null>(null);
   const [pixiError, setPixiError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const mascotId = useMascotStore((s) => s.mascotId);
   const inventory = useMascotStore((s) => s.inventory);
@@ -57,6 +58,7 @@ export function MascotStage({ animation = "idle" }: { animation?: "idle" | "happ
     const setup = async () => {
       try {
         setPixiError(null);
+        setIsLoading(true);
         const app = new Application();
         await app.init({
           width: 420,
@@ -85,12 +87,14 @@ export function MascotStage({ animation = "idle" }: { animation?: "idle" | "happ
           throw new Error("animation frames missing");
         }
 
+        const baseTexture = await Assets.load<Texture>(assets.layers.base.image);
+        if (cancelled) return;
         const baseSheet = new Spritesheet({
-          texture: Texture.from(assets.layers.base.image),
+          texture: baseTexture,
           data: cloneSheetData(assets.layers.base.atlas, assets.layers.base.image),
         });
-        await baseSheet.parse();
         sheets.push(baseSheet);
+        await baseSheet.parse();
         if (cancelled) return;
 
         const base = createLayerAnimation(baseSheet, animationMeta.frames, animationMeta.fps);
@@ -100,12 +104,14 @@ export function MascotStage({ animation = "idle" }: { animation?: "idle" | "happ
         root.addChild(base);
 
         if (equippedItem) {
+          const accessoryTexture = await Assets.load<Texture>(assets.layers.accessory.image);
+          if (cancelled) return;
           const accessorySheet = new Spritesheet({
-            texture: Texture.from(assets.layers.accessory.image),
+            texture: accessoryTexture,
             data: cloneSheetData(assets.layers.accessory.atlas, assets.layers.accessory.image),
           });
-          await accessorySheet.parse();
           sheets.push(accessorySheet);
+          await accessorySheet.parse();
           if (cancelled) return;
 
           const accessory = createLayerAnimation(accessorySheet, animationMeta.frames, animationMeta.fps);
@@ -117,12 +123,14 @@ export function MascotStage({ animation = "idle" }: { animation?: "idle" | "happ
           }
         }
 
+        const effectTexture = await Assets.load<Texture>(assets.layers.effect.image);
+        if (cancelled) return;
         const effectSheet = new Spritesheet({
-          texture: Texture.from(assets.layers.effect.image),
+          texture: effectTexture,
           data: cloneSheetData(assets.layers.effect.atlas, assets.layers.effect.image),
         });
-        await effectSheet.parse();
         sheets.push(effectSheet);
+        await effectSheet.parse();
         if (cancelled) return;
 
         const effect = createLayerAnimation(effectSheet, animationMeta.frames, animationMeta.fps);
@@ -133,9 +141,16 @@ export function MascotStage({ animation = "idle" }: { animation?: "idle" | "happ
           effect.alpha = equippedItem ? 0.42 + equippedItem.effect_multiplier * 0.1 : 0.22;
           root.addChild(effect);
         }
+        app.canvas.style.display = "block";
+        app.canvas.style.maxWidth = "100%";
+        app.canvas.style.height = "auto";
+        setIsLoading(false);
       } catch (error) {
         const detail = error instanceof Error ? error.message : "render failed";
-        setPixiError(detail);
+        if (!cancelled) {
+          setPixiError(detail);
+          setIsLoading(false);
+        }
       }
     };
 
@@ -151,15 +166,27 @@ export function MascotStage({ animation = "idle" }: { animation?: "idle" | "happ
 
   return (
     <div className="rounded-xl border border-sky-100 bg-white p-3">
-      {pixiError ? (
-        <div className="flex min-h-[280px] flex-col items-center justify-center gap-2 rounded-lg border border-amber-200 bg-amber-50 p-4 text-center">
-          <img src={assets.evolutions[1]} alt="Fallback do mascote" className="h-28 w-28 object-contain" />
-          <p className="text-sm font-semibold text-amber-900">Nao foi possivel abrir a animacao em tempo real.</p>
-          <p className="text-xs text-amber-800">Detalhe tecnico: {pixiError}</p>
-        </div>
-      ) : (
-        <div ref={hostRef} className="min-h-[280px]" />
-      )}
+      <div className="relative min-h-[280px]">
+        {pixiError ? (
+          <div className="flex min-h-[280px] flex-col items-center justify-center gap-2 rounded-lg border border-amber-200 bg-amber-50 p-4 text-center">
+            <img src={assets.evolutions[1]} alt="Mascote" className="h-28 w-28 object-contain" />
+            <p className="text-sm font-semibold text-amber-900">Não foi possível abrir a animação em tempo real.</p>
+            <p className="text-xs text-amber-800">O mascote continua aqui. Tente recarregar a página para ver a animação.</p>
+            <details className="text-left text-xs text-amber-800">
+              <summary className="cursor-pointer">Detalhes técnicos</summary>
+              <p className="mt-1">{pixiError}</p>
+            </details>
+          </div>
+        ) : (
+          <div ref={hostRef} className="min-h-[280px]" />
+        )}
+        {isLoading && !pixiError ? (
+          <div className="absolute inset-0 flex min-h-[280px] flex-col items-center justify-center gap-2 rounded-lg bg-white/90" aria-live="polite">
+            <img src={assets.evolutions[1]} alt="" className="h-28 w-28 animate-pulse object-contain" />
+            <p className="text-sm text-ink/70">Carregando animação do mascote…</p>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

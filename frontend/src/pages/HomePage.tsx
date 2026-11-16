@@ -44,12 +44,12 @@ export function HomePage() {
       <Panel className="border-0 bg-gradient-to-r from-amber-100 via-lime-100 to-cyan-100 p-6">
         <h1 className="font-heading text-3xl font-bold">Bem-vindo(a), {user?.username}</h1>
         <p className="mt-2 text-sm text-ink/70">
-          MindEdu e educativo. Sem diagnostico clinico. Hoje voce esta no nivel {dashboard.headline.level} ({dashboard.headline.tier}).
+          O MindEdu é educativo e não oferece diagnóstico clínico. Use-o com o acompanhamento de um educador ou adulto de confiança. Hoje você está no nível {dashboard.headline.level} ({dashboard.headline.tier}).
         </p>
         <div className="mt-4">
           <div className="mb-1 flex items-center justify-between text-sm font-medium">
             <span>XP Total: {dashboard.headline.xp_total}</span>
-            <span>Faltam {dashboard.headline.xp_to_next} XP para o proximo nivel</span>
+            <span>Faltam {dashboard.headline.xp_to_next} XP para o próximo nível</span>
           </div>
           <div className="h-3 overflow-hidden rounded-full bg-white/70">
             <div className="h-full rounded-full bg-ink" style={{ width: `${xpPercent}%` }} />
@@ -59,19 +59,19 @@ export function HomePage() {
 
       <div className="grid gap-4 md:grid-cols-4">
         <Link to="/trails" className={cardClass}>
-          <p className="text-xs uppercase text-ink/60">Trilhas concluidas</p>
+          <p className="text-xs uppercase text-ink/60">Trilhas concluídas</p>
           <p className="mt-1 text-2xl font-bold">{dashboard.stats.trails_completed}</p>
         </Link>
         <Link to="/checkin" className={cardClass}>
-          <p className="text-xs uppercase text-ink/60">Licoes concluidas</p>
+          <p className="text-xs uppercase text-ink/60">Lições concluídas</p>
           <p className="mt-1 text-2xl font-bold">{dashboard.stats.lessons_completed}</p>
         </Link>
         <Link to="/coop" className={cardClass}>
-          <p className="text-xs uppercase text-ink/60">Ajudas uteis</p>
+          <p className="text-xs uppercase text-ink/60">Ajudas úteis</p>
           <p className="mt-1 text-2xl font-bold">{dashboard.stats.helpful_responses}</p>
         </Link>
         <Link to="/mascot" className={cardClass}>
-          <p className="text-xs uppercase text-ink/60">Evolucao mascote</p>
+          <p className="text-xs uppercase text-ink/60">Evolução mascote</p>
           <p className="mt-1 text-2xl font-bold">{dashboard.mascot.stage}/4</p>
           <p className="mt-1 text-xs text-ink/70">4/4 e atingido com 70 XP totais.</p>
         </Link>

@@ -16,10 +16,6 @@ def seed_initial_content(db: Session) -> None:
 
 
 def seed_support_cards(db: Session) -> None:
-    count = db.execute(text("SELECT COUNT(*) FROM support_cards")).scalar_one()
-    if int(count) > 0:
-        return
-
     path = SEEDS_DIR / "support_cards.json"
     if not path.exists():
         path = Path(__file__).resolve().parents[2] / "seeds" / "support_cards.json"
@@ -31,6 +27,13 @@ def seed_support_cards(db: Session) -> None:
                 """
                 INSERT INTO support_cards (card_key, category, tone, title, body, guided_actions_json, is_active)
                 VALUES (:card_key, :category, :tone, :title, :body, :guided_actions_json, 1)
+                ON CONFLICT(card_key) DO UPDATE SET
+                  category = excluded.category,
+                  tone = excluded.tone,
+                  title = excluded.title,
+                  body = excluded.body,
+                  guided_actions_json = excluded.guided_actions_json,
+                  is_active = 1
                 """
             ),
             {
@@ -318,6 +321,54 @@ def list_trails(db: Session, age_group: str | None = None) -> list[dict[str, Any
 
     rows = db.execute(text(query), params).mappings().all()
     return [dict(row) for row in rows]
+
+
+def list_user_challenges(db: Session, user_pk: int) -> list[dict[str, Any]]:
+    rows = db.execute(
+        text(
+            """
+            SELECT
+              c.id,
+              c.title,
+              c.xp_reward,
+              c.safety_notes_json,
+              l.id AS lesson_id,
+              l.title AS lesson_title,
+              (
+                SELECT q.id
+                FROM quizzes q
+                WHERE q.lesson_id = l.id AND q.is_active = 1
+                ORDER BY q.id
+                LIMIT 1
+              ) AS quiz_id,
+              cc.status,
+              cc.completed_at
+            FROM challenges c
+            JOIN lessons l ON l.id = c.lesson_id AND l.is_active = 1
+            LEFT JOIN challenge_completion cc
+              ON cc.challenge_id = c.id AND cc.user_pk = :user_pk
+            WHERE c.is_active = 1
+            ORDER BY l.position, c.id
+            """
+        ),
+        {"user_pk": user_pk},
+    ).mappings().all()
+
+    return [
+        {
+            "id": int(row["id"]),
+            "title": str(row["title"]),
+            "xp_reward": int(row["xp_reward"]),
+            "safety_notes": json.loads(row["safety_notes_json"] or "[]"),
+            "lesson_id": int(row["lesson_id"]),
+            "lesson_title": str(row["lesson_title"]),
+            "quiz_id": int(row["quiz_id"]) if row["quiz_id"] is not None else None,
+            "status": str(row["status"]) if row["status"] else "pending",
+            "completed_at": str(row["completed_at"]) if row["completed_at"] else None,
+            "completed": row["status"] == "completed",
+        }
+        for row in rows
+    ]
 
 
 def get_lesson(db: Session, lesson_id: int) -> dict | None:

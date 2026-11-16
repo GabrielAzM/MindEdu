@@ -69,7 +69,7 @@ function QuestionCard({
           min={1}
           defaultValue={question.position}
           className="rounded border p-2"
-          aria-label={`Posicao da pergunta ${question.id}`}
+          aria-label={`Posição da pergunta ${question.id}`}
         />
         <input
           name="prompt"
@@ -82,7 +82,7 @@ function QuestionCard({
           defaultValue={question.explanation}
           className="rounded border p-2 md:col-span-3"
           rows={2}
-          aria-label={`Explicacao da pergunta ${question.id}`}
+          aria-label={`Explicação da pergunta ${question.id}`}
         />
         <div className="flex gap-2 md:col-span-3">
           <button className="rounded bg-ink px-3 py-1 text-sm text-white" type="submit">
@@ -99,7 +99,7 @@ function QuestionCard({
       </form>
 
       <div className="mt-4 space-y-2">
-        <p className="text-sm font-semibold">Opcoes</p>
+        <p className="text-sm font-semibold">Opções</p>
         {question.options.map((option) => (
           <form
             key={option.id}
@@ -120,27 +120,27 @@ function QuestionCard({
               min={1}
               defaultValue={option.position}
               className="rounded border p-2"
-              aria-label={`Posicao da opcao ${option.id}`}
+              aria-label={`Posição da opção ${option.id}`}
             />
             <input
               name="option_text"
               defaultValue={option.option_text}
               className="rounded border p-2 md:col-span-2"
-              aria-label={`Texto da opcao ${option.id}`}
+              aria-label={`Texto da opção ${option.id}`}
             />
             <label className="flex items-center gap-2 rounded border p-2 text-sm">
               <input name="is_correct" type="checkbox" defaultChecked={option.is_correct} /> Correta
             </label>
             <div className="flex gap-2 md:col-span-4">
               <button className="rounded bg-ink px-3 py-1 text-sm text-white" type="submit">
-                Salvar opcao
+                Salvar opção
               </button>
               <button
                 className="rounded border border-red-300 px-3 py-1 text-sm text-red-700"
                 type="button"
                 onClick={() => onDeleteOption(option.id)}
               >
-                Remover opcao
+                Remover opção
               </button>
             </div>
           </form>
@@ -167,21 +167,21 @@ function QuestionCard({
             value={newOptionPosition}
             className="rounded border p-2"
             onChange={(event) => setNewOptionPosition(Number(event.target.value))}
-            aria-label={`Nova posicao da opcao para pergunta ${question.id}`}
+            aria-label={`Nova posição da opção para pergunta ${question.id}`}
           />
           <input
             value={newOptionText}
             onChange={(event) => setNewOptionText(event.target.value)}
             className="rounded border p-2 md:col-span-2"
-            placeholder="Nova opcao"
-            aria-label={`Novo texto de opcao para pergunta ${question.id}`}
+            placeholder="Nova opção"
+            aria-label={`Novo texto de opção para pergunta ${question.id}`}
           />
           <label className="flex items-center gap-2 rounded border p-2 text-sm">
             <input type="checkbox" checked={newOptionCorrect} onChange={(event) => setNewOptionCorrect(event.target.checked)} />
             Correta
           </label>
           <button className="rounded bg-ink px-3 py-1 text-sm text-white md:col-span-4" type="submit">
-            Adicionar opcao
+            Adicionar opção
           </button>
         </form>
       </div>
@@ -304,8 +304,8 @@ export function AdminContentPage() {
     onError: (error) => setErrorMessage(getErrorMessage(error)),
   });
 
-  if (trailsQuery.isPending || quizzesQuery.isPending) return <LoadingState label="Carregando conteudo admin..." />;
-  if (trailsQuery.isError || quizzesQuery.isError) return <ErrorState message="Falha ao carregar conteudo admin." />;
+  if (trailsQuery.isPending || quizzesQuery.isPending) return <LoadingState label="Carregando conteúdo admin..." />;
+  if (trailsQuery.isError || quizzesQuery.isError) return <ErrorState message="Falha ao carregar conteúdo admin." />;
 
   const submitCreateQuiz = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -363,7 +363,7 @@ export function AdminContentPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="font-heading text-2xl font-bold">Admin - Conteudo (Quiz Builder)</h1>
+      <h1 className="font-heading text-2xl font-bold">Admin - Conteúdo (Quiz Builder)</h1>
       {errorMessage ? <ErrorState message={errorMessage} /> : null}
 
       <div className="grid gap-4 lg:grid-cols-[320px_1fr]">
@@ -399,7 +399,7 @@ export function AdminContentPage() {
               </select>
               <input name="lesson_id" type="number" className="w-full rounded border p-2" placeholder="lesson_id opcional" />
               <input name="slug" className="w-full rounded border p-2" placeholder="slug" required />
-              <input name="title" className="w-full rounded border p-2" placeholder="titulo" required />
+              <input name="title" className="w-full rounded border p-2" placeholder="título" required />
               <input name="passing_score" type="number" min={0} max={100} className="w-full rounded border p-2" defaultValue={70} />
               <label className="flex items-center gap-2 text-sm">
                 <input name="is_active" type="checkbox" defaultChecked /> Ativo
@@ -414,7 +414,7 @@ export function AdminContentPage() {
         <div className="space-y-4">
           {!selectedQuiz ? (
             <Panel>
-              <p className="text-sm text-ink/70">Selecione um quiz para editar perguntas e opcoes.</p>
+              <p className="text-sm text-ink/70">Selecione um quiz para editar perguntas e opções.</p>
             </Panel>
           ) : (
             <>
@@ -467,11 +467,11 @@ export function AdminContentPage() {
               <Panel>
                 <h2 className="font-semibold">Nova pergunta</h2>
                 <form key={`new-question-${selectedQuiz.id}`} className="mt-3 grid gap-2 md:grid-cols-2" onSubmit={submitCreateQuestion}>
-                  <input name="position" type="number" min={1} className="rounded border p-2" placeholder="posicao" required />
+                  <input name="position" type="number" min={1} className="rounded border p-2" placeholder="posição" required />
                   <input name="prompt" className="rounded border p-2" placeholder="prompt" required />
-                  <textarea name="explanation" className="rounded border p-2 md:col-span-2" rows={2} placeholder="explicacao" required />
-                  <input name="option_a" className="rounded border p-2" placeholder="opcao A" required />
-                  <input name="option_b" className="rounded border p-2" placeholder="opcao B" required />
+                  <textarea name="explanation" className="rounded border p-2 md:col-span-2" rows={2} placeholder="explicação" required />
+                  <input name="option_a" className="rounded border p-2" placeholder="opção A" required />
+                  <input name="option_b" className="rounded border p-2" placeholder="opção B" required />
                   <div className="flex gap-4 text-sm md:col-span-2">
                     <label className="flex items-center gap-1">
                       <input
@@ -479,7 +479,7 @@ export function AdminContentPage() {
                         checked={createQuestionCorrect === "a"}
                         onChange={() => setCreateQuestionCorrect("a")}
                       />
-                      Opcao A correta
+                      Opção A correta
                     </label>
                     <label className="flex items-center gap-1">
                       <input
@@ -487,7 +487,7 @@ export function AdminContentPage() {
                         checked={createQuestionCorrect === "b"}
                         onChange={() => setCreateQuestionCorrect("b")}
                       />
-                      Opcao B correta
+                      Opção B correta
                     </label>
                   </div>
                   <button className="rounded bg-ink px-3 py-2 text-sm text-white md:col-span-2" type="submit">

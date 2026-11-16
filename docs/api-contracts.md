@@ -68,8 +68,30 @@ Response reset-password:
 
 ## Content
 
-### GET /trails?age_group=13-15
+### GET /trails?age_group=10-12
 ### GET /lessons/{id}
+### GET /challenges
+Returns active challenges for the signed-in student, including each challenge's lesson, first active quiz, safety notes, XP reward, and completion status.
+
+```json
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Mapa de 3 emoções",
+      "xp_reward": 20,
+      "safety_notes": ["Sem compartilhar dados pessoais"],
+      "lesson_id": 1,
+      "lesson_title": "Reconhecendo emoções",
+      "quiz_id": 1,
+      "status": "pending",
+      "completed_at": null,
+      "completed": false
+    }
+  ]
+}
+```
+
 ### POST /quizzes/{id}/attempt
 Request:
 ```json
@@ -139,6 +161,7 @@ Request body: `{}`
 - GET `/admin/moderation/reports`
 - POST `/admin/moderation/reports/{id}/resolve`
 - POST `/admin/users/{id}/action`
+- GET `/admin/users/{id}/progress` (educational progress summary; each view is audited)
 - GET `/admin/audit`
 - GET `/admin/metrics`
 

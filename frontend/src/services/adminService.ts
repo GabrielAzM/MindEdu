@@ -199,3 +199,21 @@ export async function getMetrics() {
     approvals_pending: number;
   };
 }
+
+export async function getAdminUserProgress(userId: string) {
+  const { data } = await api.get(`/admin/users/${userId}/progress`);
+  return data as {
+    user: { user_id: string; username: string };
+    xp: { total: number; level: number; tier: string; xp_to_next: number };
+    progress: {
+      lessons_completed: number;
+      quizzes_passed: number;
+      challenges_completed: number;
+      missions_created: number;
+      helpful_responses: number;
+    };
+    skills: Record<string, number>;
+    mascot: { stage: number; max_stage: number };
+    recent_xp: Array<{ day: string; xp: number }>;
+  };
+}

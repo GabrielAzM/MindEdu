@@ -64,7 +64,7 @@ def block_user(db: Session, blocker_user_pk: int, blocked_user_id: str) -> dict[
         },
     )
     db.commit()
-    return {"message": "Usuario bloqueado com sucesso."}
+    return {"message": "Usuário bloqueado com sucesso."}
 
 
 def list_reports(db: Session, status: str | None = None) -> list[dict[str, Any]]:

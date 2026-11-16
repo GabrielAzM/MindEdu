@@ -2,8 +2,9 @@
 
 ## Escopo pedagogico
 
-- Produto educativo com treino de cooperacao segura.
-- Nao e terapia, nao faz diagnostico, nao fornece aconselhamento clinico.
+- Produto educativo de habilidades socioemocionais para crianças de até 12 anos.
+- As atividades devem ser mediadas por um educador ou adulto de confiança.
+- Não é terapia, não faz diagnóstico e não fornece aconselhamento clínico.
 
 ## Autenticacao
 
@@ -19,6 +20,7 @@
 - JWT access/refresh com rotacao de refresh.
 - Sem texto livre em missao/resposta no MVP.
 - Filtro de dados pessoais pronto para v1 (`pii_filters.py`).
+- O resumo educativo individual não mostra o conteúdo dos check-ins; cada visualização administrativa fica registrada na auditoria.
 
 ## UxU (nucleo)
 

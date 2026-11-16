@@ -48,7 +48,7 @@ def register(
 
     return {
         "user_id": user["user_id"],
-        "message": f"sua conta foi criada com sucesso, seu id e {user['user_id']}, aguarde a aprovacao de seu cadastro",
+        "message": f"Sua conta foi criada com sucesso. Seu ID é {user['user_id']}. Aguarde a aprovação do seu cadastro.",
     }
 
 

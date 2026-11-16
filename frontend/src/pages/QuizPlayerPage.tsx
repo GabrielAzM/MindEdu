@@ -40,8 +40,8 @@ export function QuizPlayerPage() {
       <h1 className="font-heading text-2xl font-bold">{quizQuery.data.title}</h1>
       {quizQuery.data.lesson_context.length > 0 ? (
         <Panel className="border-2 border-sky-200 bg-sky-50">
-          <p className="text-xs uppercase text-ink/60">Resumo da licao antes do quiz</p>
-          <h2 className="mt-1 font-semibold">{quizQuery.data.lesson_title ?? "Licao"}</h2>
+          <p className="text-xs uppercase text-ink/60">Resumo da lição antes do quiz</p>
+          <h2 className="mt-1 font-semibold">{quizQuery.data.lesson_title ?? "Lição"}</h2>
           <div className="mt-2 space-y-1 text-sm text-ink/80">
             {quizQuery.data.lesson_context.map((line, idx) => (
               <p key={`ctx-${idx}`}>{line}</p>
@@ -102,12 +102,12 @@ export function QuizPlayerPage() {
           {(mutation.data.lesson_completed || mutation.data.challenge_completed || mutation.data.trail_completed) ? (
             <div className="text-sm text-ink/80">
               <p>
-                Licao concluida: {mutation.data.lesson_completed ? "sim" : "nao"} | desafio concluido: {mutation.data.challenge_completed ? "sim" : "nao"} |
-                trilha concluida: {mutation.data.trail_completed ? "sim" : "nao"}
+                Lição concluída: {mutation.data.lesson_completed ? "sim" : "não"} | desafio concluído: {mutation.data.challenge_completed ? "sim" : "não"} |
+                trilha concluída: {mutation.data.trail_completed ? "sim" : "não"}
               </p>
               {mutation.data.next_lesson_id ? (
                 <Link to={`/lessons/${mutation.data.next_lesson_id}`} className="mt-2 inline-block rounded bg-ink px-3 py-1 text-white">
-                  Proxima licao sugerida
+                  Próxima lição sugerida
                 </Link>
               ) : (
                 <Link to="/trails" className="mt-2 inline-block rounded bg-ink px-3 py-1 text-white">

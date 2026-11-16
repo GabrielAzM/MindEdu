@@ -6,6 +6,7 @@ import { LoadingState } from "../components/common/LoadingState";
 import { Panel } from "../components/common/Panel";
 import { getMyTrails } from "../services/progressService";
 import { getMissionInbox } from "../services/uxuService";
+import { formatMindEduLabel } from "../lib/mindEduLabels";
 
 export function TrailsPage() {
   const trailsQuery = useQuery({ queryKey: ["my-trails"], queryFn: getMyTrails });
@@ -20,36 +21,37 @@ export function TrailsPage() {
   return (
     <div className="space-y-4">
       <h1 className="font-heading text-2xl font-bold">Trilhas</h1>
+      <p className="text-sm text-ink/70">Conteúdos para crianças de até 12 anos, com foco em habilidades socioemocionais.</p>
 
       {missionInboxQuery.data?.items.length ? (
         <Panel className="border-2 border-emerald-200 bg-emerald-50">
-          <h2 className="text-lg font-semibold">Missoes de cooperacao recebidas</h2>
+          <h2 className="text-lg font-semibold">Missões de cooperação recebidas</h2>
           <div className="mt-2 space-y-2">
             {missionInboxQuery.data.items.map((mission) => (
               <div key={`inbox-${mission.id}`} className="rounded border border-emerald-200 bg-white p-3">
                 <p className="font-medium">{mission.message}</p>
                 <p className="text-sm text-ink/70">
-                  #{mission.id} - {mission.category} ({mission.intensity}/5) | precisa de: {mission.want_now}
+                  #{mission.id} - {formatMindEduLabel(mission.category)} ({mission.intensity}/5) | precisa de: {formatMindEduLabel(mission.want_now)}
                 </p>
                 <Link to={`/coop/missions/${mission.id}`} className="mt-2 inline-block rounded bg-ink px-3 py-1 text-sm text-white">
-                  Abrir missao coop
+                  Abrir missão coop
                 </Link>
               </div>
             ))}
           </div>
         </Panel>
       ) : null}
-      {missionInboxQuery.isError ? <ErrorState message="Falha ao carregar missoes de cooperacao." /> : null}
+      {missionInboxQuery.isError ? <ErrorState message="Falha ao carregar missões de cooperação." /> : null}
 
       {baseTrails.map((trail) => (
         <Panel key={`base-${trail.id}`}>
           <h2 className="text-lg font-semibold">{trail.title}</h2>
           <p className="mt-1 text-sm text-ink/70">{trail.description}</p>
           <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
-            <span>{trail.lesson_count} licoes</span>
+            <span>{trail.lesson_count} lições</span>
             {trail.first_lesson_id ? (
               <Link to={`/lessons/${trail.first_lesson_id}`} className="rounded bg-ink px-3 py-1 text-white">
-                Abrir primeira licao
+                Abrir primeira lição
               </Link>
             ) : null}
           </div>
@@ -59,7 +61,7 @@ export function TrailsPage() {
       <h2 className="pt-2 text-xl font-semibold">Trilhas geradas pelo seu XP</h2>
       {generatedTrails.length === 0 ? (
         <Panel>
-          <p className="text-sm text-ink/70">Ganhe XP em quizzes, check-ins e cooperacao para desbloquear trilhas dinamicas.</p>
+          <p className="text-sm text-ink/70">Ganhe XP em quizzes, check-ins e cooperação para desbloquear trilhas dinâmicas.</p>
         </Panel>
       ) : null}
       {generatedTrails.map((trail) => (
@@ -68,10 +70,10 @@ export function TrailsPage() {
           <h3 className="mt-1 text-lg font-bold">{trail.title}</h3>
           <p className="text-sm text-ink/70">{trail.description}</p>
           <div className="mt-2 flex flex-wrap gap-2 text-xs">
-            <span className="rounded-full bg-white px-2 py-1">dificuldade: {trail.difficulty}</span>
+            <span className="rounded-full bg-white px-2 py-1">Dificuldade: {formatMindEduLabel(trail.difficulty)}</span>
             {trail.focus_tags.map((tag) => (
               <span key={`${trail.id}-${tag}`} className="rounded-full bg-white px-2 py-1">
-                {tag}
+                {formatMindEduLabel(tag)}
               </span>
             ))}
           </div>
@@ -83,7 +85,7 @@ export function TrailsPage() {
                   {idx + 1}. {lesson.title}
                 </p>
               ))}
-              {trail.mission_suggestion ? <p className="text-xs text-ink/70">Missao sugerida: {trail.mission_suggestion}</p> : null}
+              {trail.mission_suggestion ? <p className="text-xs text-ink/70">Missão sugerida: {formatMindEduLabel(trail.mission_suggestion)}</p> : null}
             </div>
           ) : null}
           <div className="mt-3">
@@ -92,7 +94,7 @@ export function TrailsPage() {
                 Iniciar trilha gerada
               </Link>
             ) : (
-              <p className="text-xs text-ink/70">Esta trilha sera liberada na proxima atualizacao de XP.</p>
+              <p className="text-xs text-ink/70">Esta trilha será liberada na próxima atualização de XP.</p>
             )}
           </div>
         </Panel>

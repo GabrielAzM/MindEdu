@@ -12,8 +12,8 @@ export function LessonPlayerPage() {
 
   const lessonQuery = useQuery({ queryKey: ["lesson", lessonId], queryFn: () => getLesson(lessonId) });
 
-  if (lessonQuery.isPending) return <LoadingState label="Carregando licao..." />;
-  if (lessonQuery.isError) return <ErrorState message="Falha ao carregar licao." />;
+  if (lessonQuery.isPending) return <LoadingState label="Carregando lição..." />;
+  if (lessonQuery.isError) return <ErrorState message="Falha ao carregar lição." />;
 
   return (
     <div className="space-y-4">
@@ -31,7 +31,7 @@ export function LessonPlayerPage() {
           </Link>
         ) : null}
       </div>
-      <p className="text-sm text-ink/70">A conclusao e automatica ao enviar o quiz desta licao.</p>
+      <p className="text-sm text-ink/70">A conclusão e automática ao enviar o quiz desta lição.</p>
     </div>
   );
 }

@@ -57,7 +57,7 @@ export function CheckinPage() {
         <form className="grid gap-3 md:grid-cols-2" onSubmit={form.handleSubmit((values) => mutation.mutate(values))}>
           <select className="rounded border p-2" {...form.register("emotion")}>
             <option value="ansiedade">Ansiedade</option>
-            <option value="frustracao">Frustracao</option>
+            <option value="frustracao">Frustração</option>
             <option value="calma">Calma</option>
             <option value="alegria">Alegria</option>
           </select>
@@ -76,7 +76,7 @@ export function CheckinPage() {
           <p className="text-sm text-ink/80">
             XP hoje: {mutation.data.xp_awarded} ({mutation.data.xp_reason}).
           </p>
-          {mutation.data.daily_cap_reached ? <p className="text-sm text-amber-800">Limite diario de XP do check-in ja utilizado.</p> : null}
+          {mutation.data.daily_cap_reached ? <p className="text-sm text-amber-800">Limite diário de XP do check-in já utilizado.</p> : null}
           <div className="mt-2">
             <Link to="/coop" className="rounded bg-ink px-3 py-1 text-sm text-white">
               {mutation.data.suggestion.cta}

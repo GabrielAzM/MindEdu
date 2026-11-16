@@ -12,8 +12,20 @@ from app.services.content_service import seed_initial_content
 settings = get_settings()
 
 
+def _validate_production_settings() -> None:
+    if settings.environment.lower() not in {"prod", "production"}:
+        return
+    if settings.jwt_secret == "change-me-in-production" or len(settings.jwt_secret) < 32:
+        raise RuntimeError("Set MINDEDU_JWT_SECRET to a random value of at least 32 characters in production.")
+    if settings.admin_password == "Admin12345" or len(settings.admin_password) < 12:
+        raise RuntimeError("Set MINDEDU_ADMIN_PASSWORD to a unique value of at least 12 characters in production.")
+    if not settings.cors_origin_list or any("localhost" in origin for origin in settings.cors_origin_list):
+        raise RuntimeError("Set MINDEDU_CORS_ORIGINS to the deployed frontend origin in production.")
+
+
 @asynccontextmanager
 async def lifespan(_: FastAPI):
+    _validate_production_settings()
     init_db()
     db = SessionLocal()
     try:

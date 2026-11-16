@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: mindedu-api
+    runtime: python
+    plan: starter
+    region: virginia
+    rootDir: backend
+    buildCommand: pip install -e .
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    disk:
+      name: mindedu-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.11
+      - key: MINDEDU_ENVIRONMENT
+        value: production
+      - key: MINDEDU_JWT_SECRET
+        generateValue: true
+      - key: MINDEDU_ADMIN_PASSWORD
+        generateValue: true
+      - key: MINDEDU_DB_FILE
+        value: /var/data/mindedu.db
+      - key: MINDEDU_EXPORT_DIR
+        value: /var/data/exports
+      - key: MINDEDU_RECOVERY_OUTBOX_PATH
+        value: /var/data/recovery_outbox.log
+      - key: MINDEDU_CORS_ORIGINS
+        value: https://mindedu-web.onrender.com
+
+  - type: web
+    name: mindedu-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://mindedu-api.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

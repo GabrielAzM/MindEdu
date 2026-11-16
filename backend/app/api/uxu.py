@@ -110,7 +110,7 @@ def respond_mission(
             guided_actions_selected=data.guided_actions_selected,
         )
     except IntegrityError as exc:
-        raise HTTPException(status_code=409, detail="resposta ja registrada para esta missao") from exc
+        raise HTTPException(status_code=409, detail="Resposta já registrada para esta missão.") from exc
     except PermissionError as exc:
         raise HTTPException(status_code=403, detail=str(exc)) from exc
     except ValueError as exc:
@@ -136,7 +136,7 @@ def mission_feedback(
             best_response=data.best_response,
         )
     except IntegrityError as exc:
-        raise HTTPException(status_code=409, detail="feedback ja registrado") from exc
+        raise HTTPException(status_code=409, detail="Feedback já registrado.") from exc
     except PermissionError as exc:
         raise HTTPException(status_code=403, detail=str(exc)) from exc
     except ValueError as exc:

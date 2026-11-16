@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.core.config import get_settings
 from app.core.jwt import create_access_token, create_refresh_token, decode_token
 from app.core.security import generate_user_id, hash_password, hash_token, verify_password
 
@@ -167,6 +168,7 @@ def get_user_by_id(db: Session, user_pk: int) -> dict | None:
 
 
 def ensure_default_admin(db: Session) -> None:
+    settings = get_settings()
     existing = db.execute(text("SELECT id FROM users WHERE role = 'admin' LIMIT 1")).mappings().first()
     if existing:
         db.execute(
@@ -192,10 +194,10 @@ def ensure_default_admin(db: Session) -> None:
             """
         ),
         {
-            "user_id": "MDU-ADMIN-0001",
-            "email": "admin@mindedu.local",
-            "username": "Admin",
-            "password_hash": hash_password("Admin12345"),
+            "user_id": settings.admin_user_id,
+            "email": settings.admin_email,
+            "username": settings.admin_username,
+            "password_hash": hash_password(settings.admin_password),
             "approved_at": datetime.now(UTC).isoformat(),
         },
     )

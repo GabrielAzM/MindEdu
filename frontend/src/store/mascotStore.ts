@@ -9,7 +9,7 @@ export const mascotCatalog: Record<MascotId, { name: string; description: string
   },
   owl: {
     name: "Coruja Nino",
-    description: "Mascote de calma e estrategia para estudar com foco.",
+    description: "Mascote de calma e estratégia para estudar com foco.",
   },
 };
 

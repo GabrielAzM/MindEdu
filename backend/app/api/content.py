@@ -11,6 +11,14 @@ from app.services import content_service
 router = APIRouter(tags=["content"])
 
 
+@router.get("/challenges")
+def get_challenges(
+    user: UserCtx = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    return {"items": content_service.list_user_challenges(db, user.pk)}
+
+
 @router.get("/trails")
 def get_trails(
     age_group: str | None = Query(default=None),

@@ -15,6 +15,11 @@ MindEdu e uma plataforma educativa com foco em cooperacao segura usuario-usuario
 - `shared/`: contratos compartilhados
 - `docs/`: blueprint e regras
 
+## Guia de uso
+
+- Consulte [docs/guia-do-uso.md](docs/guia-do-uso.md) para os fluxos de criança e equipe adulta, cooperação segura, mediação e relatórios.
+- Consulte [docs/deploy-render.md](docs/deploy-render.md) para provisionar e publicar frontend e API no Render.
+
 ## Executar backend
 
 ```bash

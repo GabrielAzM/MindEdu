@@ -39,7 +39,8 @@ export function RegisterPage() {
   return (
     <div className="mx-auto mt-16 max-w-md rounded-xl border border-sky-100 bg-white p-6 shadow">
       <h1 className="font-heading text-2xl font-bold">Criar conta</h1>
-      <p className="mt-1 text-sm text-ink/70">Login sera com user_id + senha.</p>
+      <p className="mt-1 text-sm text-ink/70">Plataforma educativa para crianças de até 12 anos. O acesso depende da aprovação da equipe responsável.</p>
+      <p className="mt-1 text-sm text-ink/70">O login será feito com seu user_id e senha.</p>
       <form className="mt-4 space-y-3" onSubmit={form.handleSubmit((values) => mutation.mutate(values))}>
         <input className="w-full rounded border p-2" placeholder="Email" {...form.register("email")} />
         <input className="w-full rounded border p-2" placeholder="Username" {...form.register("username")} />
@@ -50,7 +51,7 @@ export function RegisterPage() {
         </button>
       </form>
       <Link className="mt-3 block text-sm text-blue-700" to="/login">
-        Ja tenho conta
+        Já tenho conta
       </Link>
     </div>
   );

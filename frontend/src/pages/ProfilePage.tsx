@@ -23,7 +23,7 @@ export function ProfilePage() {
 
   const bars = [
     { name: "Trilhas", value: profile.progress.trails_completed },
-    { name: "Licoes", value: profile.progress.lessons_completed },
+    { name: "Lições", value: profile.progress.lessons_completed },
     { name: "Quizzes", value: profile.progress.quizzes_passed },
     { name: "Ajudas", value: profile.progress.helpful_responses },
     { name: "Coop", value: profile.progress.coop_pairs_active },
@@ -53,7 +53,7 @@ export function ProfilePage() {
             <div className="h-full rounded-full bg-ink" style={{ width: `${Math.min(100, (profile.xp.current_level_xp / profile.xp.next_level_xp) * 100)}%` }} />
           </div>
           <p className="mt-2 text-sm text-ink/70">
-            Nivel {profile.xp.level} - XP {profile.xp.total} (faltam {profile.xp.xp_to_next} XP para o proximo nivel)
+            Nível {profile.xp.level} - XP {profile.xp.total} (faltam {profile.xp.xp_to_next} XP para o próximo nível)
           </p>
         </Panel>
 
@@ -61,13 +61,13 @@ export function ProfilePage() {
           <p className="text-xs uppercase text-ink/60">Mascote atual ({mascotName})</p>
           <img
             src={assets.evolutions[stage]}
-            alt={`Evolucao ${stage} do mascote ${mascotId}`}
+            alt={`Evolução ${stage} do mascote ${mascotId}`}
             className="mt-2 h-48 w-full rounded-xl border border-sky-100 object-contain"
           />
-          <p className="mt-2 text-sm font-medium">Evolucao {stage}/4</p>
-          <p className="text-xs text-ink/70">Regra de evolucao: 10, 30, 50 e 70 XP.</p>
+          <p className="mt-2 text-sm font-medium">Evolução {stage}/4</p>
+          <p className="text-xs text-ink/70">Regra de evolução: 10, 30, 50 e 70 XP.</p>
           <p className="text-xs text-ink/70">
-            XP atual: {profile.xp.total} {mascotMaxReached ? "| maximo 4/4 atingido" : ""}
+            XP atual: {profile.xp.total} {mascotMaxReached ? "| máximo 4/4 atingido" : ""}
           </p>
         </Panel>
       </div>

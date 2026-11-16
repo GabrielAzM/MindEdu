@@ -6,13 +6,14 @@ import { ErrorState } from "../components/common/ErrorState";
 import { LoadingState } from "../components/common/LoadingState";
 import { Panel } from "../components/common/Panel";
 import { feedbackMission, getMission, getSupportCards, respondMission } from "../services/uxuService";
+import { formatMindEduLabel } from "../lib/mindEduLabels";
 
 function getErrorMessage(error: unknown): string {
   if (typeof error === "object" && error !== null && "response" in error) {
     const response = (error as { response?: { data?: { detail?: string } } }).response;
     if (response?.data?.detail) return response.data.detail;
   }
-  return "Falha na operacao.";
+  return "Falha na operação.";
 }
 
 export function MissionRespondPage() {
@@ -58,28 +59,28 @@ export function MissionRespondPage() {
     [cardsQuery.data, selectedCard]
   );
 
-  if (missionQuery.isPending) return <LoadingState label="Carregando missao..." />;
-  if (missionQuery.isError) return <ErrorState message="Falha ao carregar missao." />;
+  if (missionQuery.isPending) return <LoadingState label="Carregando missão..." />;
+  if (missionQuery.isError) return <ErrorState message="Falha ao carregar missão." />;
 
   return (
     <div className="space-y-4">
-      <h1 className="font-heading text-2xl font-bold">Responder missao #{missionId}</h1>
+      <h1 className="font-heading text-2xl font-bold">Responder missão #{missionId}</h1>
       <Panel>
         <p className="font-semibold">
-          Categoria: {missionQuery.data.category} | intensidade: {missionQuery.data.intensity}/5
+          Categoria: {formatMindEduLabel(missionQuery.data.category)} | intensidade: {missionQuery.data.intensity}/5
         </p>
         <p className="text-sm text-ink/70">
-          Contexto: {missionQuery.data.context_tags.join(", ")} | quer agora: {missionQuery.data.want_now}
+          Contexto: {missionQuery.data.context_tags.map(formatMindEduLabel).join(", ")} | precisa agora: {formatMindEduLabel(missionQuery.data.want_now)}
         </p>
         {missionQuery.data.is_targeted && missionQuery.data.target_user_id ? (
-          <p className="mt-1 text-xs font-medium text-emerald-700">Missao cooperativa direcionada para: {missionQuery.data.target_user_id}</p>
+          <p className="mt-1 text-xs font-medium text-emerald-700">Missão cooperativa direcionada para: {missionQuery.data.target_user_id}</p>
         ) : null}
       </Panel>
 
       {missionQuery.data.is_mine ? (
         <Panel className="border-2 border-amber-200 bg-amber-50">
-          <p className="font-medium text-amber-900">Esta missao foi criada por voce.</p>
-          <p className="text-sm text-ink/80">No MVP, o proprio autor nao pode responder a propria missao.</p>
+          <p className="font-medium text-amber-900">Esta missão foi criada por você.</p>
+          <p className="text-sm text-ink/80">No MVP, o próprio autor não pode responder a própria missão.</p>
         </Panel>
       ) : null}
 
@@ -109,7 +110,7 @@ export function MissionRespondPage() {
 
       {selectedCardData && !missionQuery.data.is_mine ? (
         <Panel>
-          <h2 className="font-semibold">Acoes guiadas da carta</h2>
+          <h2 className="font-semibold">Ações guiadas da carta</h2>
           <div className="mt-2 space-y-2">
             {selectedCardData.guided_actions.map((action) => {
               const active = selectedActions.includes(action);
@@ -125,7 +126,7 @@ export function MissionRespondPage() {
                       });
                     }}
                   />
-                  {action}
+                  {formatMindEduLabel(action)}
                 </label>
               );
             })}
@@ -151,14 +152,14 @@ export function MissionRespondPage() {
 
       {responseId ? (
         <Panel>
-          <h2 className="font-semibold">Validar cooperacao</h2>
-          <p className="text-sm text-ink/70">Quem criou a missao confirma se ajudou. Em parceria ativa, XP vem em dobro.</p>
+          <h2 className="font-semibold">Validar cooperação</h2>
+          <p className="text-sm text-ink/70">Quem criou a missão confirma se ajudou. Em parceria ativa, XP vem em dobro.</p>
           <div className="mt-3 flex gap-2">
             <button className="rounded bg-emerald-700 px-4 py-2 text-white" onClick={() => feedback.mutate({ useful: true, best_response: true })} type="button">
-              Marcou util + melhor
+              Marcar como útil e melhor resposta
             </button>
             <button className="rounded border border-red-300 px-4 py-2 text-red-700" onClick={() => feedback.mutate({ useful: false, best_response: false })} type="button">
-              Nao ajudou
+              Não ajudou
             </button>
           </div>
         </Panel>

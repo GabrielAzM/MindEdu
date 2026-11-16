@@ -52,7 +52,7 @@ export function LoginPage() {
         <Link to="/recovery/reset-password">Esqueci minha senha</Link>
       </div>
       <Link to="/register" className="mt-2 block text-sm text-ink/70">
-        Nao tenho conta
+        Não tenho conta
       </Link>
     </div>
   );

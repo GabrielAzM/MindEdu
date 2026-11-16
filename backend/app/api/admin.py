@@ -21,7 +21,7 @@ from app.schemas.contracts import (
     ReportResolveIn,
     UserCtx,
 )
-from app.services import moderation_service
+from app.services import moderation_service, progress_service
 
 router = APIRouter(prefix="/admin", tags=["admin"])
 
@@ -90,6 +90,38 @@ def _question_summary(db: Session, quiz_id: int) -> list[dict[str, Any]]:
         question["options"] = by_question.get(int(question["id"]), [])
         result.append(question)
     return result
+
+
+@router.get("/users/{target_user_id}/progress")
+def admin_user_progress(
+    target_user_id: str,
+    request: Request,
+    admin: UserCtx = Depends(require_admin),
+    db: Session = Depends(get_db),
+):
+    user = db.execute(
+        text("SELECT id FROM users WHERE user_id = :user_id AND role = 'user'"),
+        {"user_id": target_user_id},
+    ).mappings().first()
+    if not user:
+        raise HTTPException(status_code=404, detail="user not found")
+
+    try:
+        summary = progress_service.get_educator_progress_summary(db, int(user["id"]))
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+    write_audit(
+        db,
+        actor_user_pk=admin.pk,
+        actor_role=admin.role,
+        action="admin.user.progress.view",
+        entity_type="user",
+        entity_id=str(user["id"]),
+        payload={"user_id": target_user_id},
+        request=request,
+    )
+    return summary
 
 
 @router.get("/trails")
